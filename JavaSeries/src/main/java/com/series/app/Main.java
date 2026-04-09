@@ -5,10 +5,10 @@ import com.series.model.Serie;
 import com.series.utils.Validacoes;
 
 public class Main {
-     public static void main(String[] args) {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Serie serie = new Serie("Dragões: Corrida até o Limite", "Animação", 2015 , 6 , 78 , "T.J. Sullivan");
+        Serie serie = new Serie("Dragões: Corrida até o Limite", "Animação", 2015, 6, 78, "T.J. Sullivan");
 
         int opcao;
 
@@ -16,6 +16,7 @@ public class Main {
 
             imprimirMenu();
             opcao = recebeOp(scanner);
+            System.out.println(); // deixa mais bonito, perfeccionismo
 
             switch (opcao) {
 
@@ -63,7 +64,7 @@ public class Main {
                     System.out.println("Opção inválida!");
             }
 
-        } while (opcao != 0);
+        } while (opcao != 0); // Enquanto a opção que o usuário der não for 0, continua rodando
 
         scanner.close();
     }
@@ -81,16 +82,16 @@ public class Main {
         System.out.println("8. verificar se a Série é maratonavel");
         System.out.println("9. Verificar se a série é longa");
         System.out.println("0. Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.print("\nEscolha uma opção: ");
+
     }
 
     public static int recebeOp(Scanner scanner) {
         try {
             return Integer.parseInt(scanner.nextLine());
-        }           catch (Exception e) {
-            System.out.println("Digite um número válido!");
+        } catch (Exception e) {
             return -1;
-         }
+        }
     }
 
     public static void alterarTitulo(Serie serie, Scanner scanner) {
@@ -146,7 +147,9 @@ public class Main {
                 System.out.println(Validacoes.mensagemErroAno(novoAno));
             }
 
-        } catch (NumberFormatException e) {
+        }
+
+        catch (NumberFormatException e) { // Dá print caso alguma letra ou float seja digitado em um int
 
             System.out.println("Digite um número válido!");
         }
@@ -166,7 +169,9 @@ public class Main {
                 System.out.println(Validacoes.mensagemErroTemporada(novaTemporada));
             }
 
-        } catch (NumberFormatException e) {
+        }
+
+        catch (NumberFormatException e) { // Dá print caso alguma letra ou float seja digitado em um int
 
             System.out.println("Erro: Digite um número válido!");
         }
@@ -177,7 +182,7 @@ public class Main {
 
         try {
 
-            int novoEpisodio= Integer.parseInt(scanner.nextLine());
+            int novoEpisodio = Integer.parseInt(scanner.nextLine());
 
             if (Validacoes.episodioValido(novoEpisodio)) {
                 serie.setEpisodios(novoEpisodio);
@@ -186,12 +191,12 @@ public class Main {
                 System.out.println(Validacoes.mensagemErroEpisodio(novoEpisodio));
             }
 
-        } catch (NumberFormatException e) {
+        }
+
+        catch (NumberFormatException e) { // Dá print caso alguma letra ou float seja digitado em um int
 
             System.out.println("Erro: Digite um número válido!");
         }
     }
 
 }
-    
-
